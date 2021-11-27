@@ -106,7 +106,6 @@ func ContainsMat(s string) bool {
 	return false
 }
 
-
 func convertEngToRus(s string) string {
 
 	slice := strings.Split(s,"")
@@ -128,14 +127,33 @@ func cleanBadSymbols(s string) string {
 }
 
 func isInGoodWords(s string) bool {
+	for i := 0; i < len(goodWords); i++ {
+		if s == goodWords[i] {
+			return true
+		}
+	}
 	return false
 }
 
 func isInGoodPatterns(s string) bool {
+	var pattern *regexp.Regexp
+	for i :=0;i < len(goodPatterns); i++ {
+		pattern = regexp.MustCompile(goodPatterns[i])
+		if pattern.Match([]byte(s)) {
+			return true
+		}
+	}
 	return false
 }
 
 func isInBadPatterns(s string) bool {
+	var pattern *regexp.Regexp
+	for i :=0;i < len(badPatterns); i++ {
+		pattern = regexp.MustCompile(badPatterns[i])
+		if pattern.Match([]byte(s)) {
+			return true
+		}
+	}
 	return false
 }
 
