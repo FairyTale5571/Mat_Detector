@@ -108,15 +108,16 @@ func ContainsMat(s string) bool {
 
 
 func convertEngToRus(s string) string {
-	slice := []byte(s)
-	for i := 0; i < len(slice); i++{
-		if key, ok := letters[string(slice[i])]; ok {
-			if string(slice[i]) == key {
 
+	slice := strings.Split(s,"")
+	for i := 0; i < len(slice); i++{
+		if key, ok := letters[slice[i]]; ok {
+			if slice[i] == key {
+				slice[i] = key
 			}
 		}
 	}
-	return ""
+	return strings.Join(slice,"")
 }
 
 func cleanBadSymbols(s string) string {
