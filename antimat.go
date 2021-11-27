@@ -1,5 +1,10 @@
 package Mat_Detector
 
+import (
+	"regexp"
+	"strings"
+)
+
 var badPatterns = []string{
 	"^(о|а)н(о|а)нист.*",
 	"^лошар.*",
@@ -80,31 +85,60 @@ var letters = map[string]string{
 	"9": "д",
 }
 
-func containsMat() bool {
+func ContainsMat(s string) bool {
+
+	s = cleanBadSymbols(s)
+	words := strings.Split(s, " ")
+
+	for _, elem := range words {
+		var word = convertEngToRus(elem)
+		if isInGoodWords(word) && isInGoodPatterns(word) {
+			continue
+		}
+		if isInBadPatterns(word) {
+			return true
+		}
+	}
+	if containsMatInSpaceWords(words) {
+		return true
+	}
+
 	return false
 }
 
-func convertEngToRus() string {
+
+func convertEngToRus(s string) string {
+	slice := []byte(s)
+	for i := 0; i < len(slice); i++{
+		if key, ok := letters[string(slice[i])]; ok {
+			if string(slice[i]) == key {
+
+			}
+		}
+	}
 	return ""
 }
 
-func cleanBadSymbols() string {
-	return ""
+func cleanBadSymbols(s string) string {
+	s = strings.ToLower(s)
+	reg := regexp.MustCompile("/[^a-zA-Zа-яА-Яё0-9\\s]/g")
+	res := reg.ReplaceAllString(s,"")
+	return res
 }
 
-func isInGoodWords() bool {
+func isInGoodWords(s string) bool {
 	return false
 }
 
-func isInGoodPatterns() bool {
+func isInGoodPatterns(s string) bool {
 	return false
 }
 
-func isInBadPatterns() bool {
+func isInBadPatterns(s string) bool {
 	return false
 }
 
-func containsMatInSpaceWords() bool {
+func containsMatInSpaceWords(s []string) bool {
 	return false
 }
 
