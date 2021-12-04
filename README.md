@@ -6,7 +6,11 @@
 go get github.com/FairyTale5571/Mat_Detector
 ```
 
-TODO
+```
+if swears.ContainsMat(string) {
+  fmt.Printf("Обнаружено матерное слово\n")
+}
+```
 
 ## Автор оригинала
 [itlessons] https://github.com/itlessons/js-antimat
