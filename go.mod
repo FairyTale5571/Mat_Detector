@@ -1,3 +1,3 @@
-module Mat_Detector
+module swears
 
 go 1.17

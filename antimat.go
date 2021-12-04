@@ -1,4 +1,4 @@
-package Mat_Detector
+package swears
 
 import (
 	"regexp"
@@ -158,27 +158,18 @@ func isInBadPatterns(s string) bool {
 }
 
 func containsMatInSpaceWords(s []string) bool {
+	var spaceWords = findSpaceWords(strings.Join(s," "))
+
+	for i := 0;i < len(spaceWords);i++ {
+		var word = convertEngToRus(spaceWords[i])
+		if isInBadPatterns(word){
+			return true
+		}
+	}
 	return false
-}
-
-func findSpaceWords() []string {
-	var out []string
-	return out
-}
-
-func addBadPattern() {
 
 }
 
-func addGoodPattern() {
-
-}
-
-func addGoodWord() {
-
-}
-
-
-func main() {
-
+func findSpaceWords(s string) []string {
+	return strings.Fields(s)
 }

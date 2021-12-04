@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Mat_Detector.iml" filepath="$PROJECT_DIR$/.idea/Mat_Detector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/swears.iml" filepath="$PROJECT_DIR$/.idea/swears.iml" />
     </modules>
   </component>
 </project>
